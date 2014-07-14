@@ -91,7 +91,11 @@ foreach($to_print as $item) {
 
 /* generate thumbnails for each folder */
   if (!file_exists("$item.jpg")) {
-    $img = imagecreatefromjpeg("$item/AlbumArt.jpg");
+    if (file_exists("$item/AlbumArt.jpg")) {
+      $img = imagecreatefromjpeg("$item/AlbumArt.jpg");
+    } else {
+      $img = imagecreatefromjpeg("includes/default.jpg");
+    }
     $tmp_img = imagecreatetruecolor(200, 200);
     imagecopyresampled($tmp_img, $img, 0, 0, 0, 0, 200, 200, imagesx($img), imagesy($img));
     imagejpeg($tmp_img, "$item.jpg", 90);
