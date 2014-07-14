@@ -114,7 +114,7 @@ for($tr = 0; $tr < $rows; $tr++) {  /* loop thru each row */
     for($td = 0; $td < $cols; $td++) {  /* loop thru each column */
       if ($addr < count($to_print)) {  /* if there are still items left in the array */
         $name = str_replace(" - ", "<br>", $to_print[$addr]);  /* generate a pretty name for the table */
-        echo "  <td><a href=\"$to_print[$addr].html\"><img src=\"$to_print[$addr].jpg\"><br>$name</a></td>\n";  /* print and link to the name */
+        echo "  <td><a href=\"$to_print[$addr].html\"><img src=\"$to_print[$addr].jpg\" width=\"200\" height=\"200\"><br>$name</a></td>\n";  /* print and link to the name */
       } else {  /* otherwise there are no names left in the array */
         echo "  <td></td>\n";  /* just print an empty cell */
       }
