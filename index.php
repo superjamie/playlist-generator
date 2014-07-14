@@ -57,12 +57,10 @@ function createindex($item) {
   } else { 
     //file is ok so write the other elements to it 
     $files = array();
-    $dir = opendir("$item");
-    while (false != ($file = readdir($dir))) {
-      if(($file != ".") and ($file != "..") and ($file != "AlbumArt.jpg")) {
-        $files[] = $file;
-      }
-    }
+    $basedir = getcwd();
+    chdir("$item");
+    $files = array_filter(glob('*.mp3'), 'is_file');
+    chdir("$basedir");
     sort($files);
     foreach($files as $file) {
       $trackname = substr($file,3);  // remove first three characters to get rid of track number
